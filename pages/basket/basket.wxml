@@ -1,0 +1,135 @@
+<wxs module="filters" src="../../filter/filters.wxs"></wxs>
+ <!--1.添加搜索框 -->
+<view class='page_row' bindtap="suo">  
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchcion" size='35' type='search'></icon>  
+          <input class="" disabled placeholder="请输入食物关键字" value="{{searchValue}}"/>  
+        </view>  
+      </view>  
+      <view class='sousuo'>搜索</view>  
+</view> 
+<!--  -->
+<!-- 2.添加整个盒子布局-->
+<view class="container">
+  <view class="content-container">
+    
+    <!-- （1）左侧栏：分类栏 -->
+    <scroll-view class='classify-container left' scroll-y="false">
+      <view class='classify-container-bg'>       
+        <view class="item {{classifySeleted==classify.id?'active':''}}" wx:for="{{shop.data}}" wx:key="id"  wx:for-item="classify" data-id="{{classify.id}}" bindtap="tapClassify"><!-- （1）左侧栏：绑定tapClassify事件用于滚动跳转 给出每栏的条目名（classify.name） -->
+          {{classify.name}}
+        </view>
+      </view>
+    </scroll-view><!-- 绑定在滚动条类下面 -->
+
+    <!-- （2）右侧栏：具体菜品栏 -->
+    <scroll-view class='goods-container left' scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll" scroll-with-animation="true" style="height:{{scrollHeight - 80}}px">
+
+      <view class='classify' wx:for="{{shop.data}}" wx:for-item="classify" wx:for-index="classifyIndex" wx:key="id" id="{{classify.id}}">
+        <view class='title'>{{classify.name}}</view><!-- 给出每栏的条目名（classify.name左上角蓝色小字） -->
+        <view class='item' wx:for='{{classify.menu}}' wx:for-item="menu" wx:for-index="menuIndex" wx:key="id">
+          <view class='left-box'><!-- 给出每栏的条目对应的图片 -->
+            <image src="{{menu.img ? menu.img : defaultImg}}"></image>
+          </view>
+          <view class='right'><!-- 给出每栏的条目对应具体属性 -->
+            <view class='name text-hide1'>{{menu.name}}</view><!-- 条目对应名字 -->
+            <view class='price-num-wrap'>
+              <view class='price'>{{menu.price}}Kcal</view><!-- 条目所含热量 -->
+
+              <!-- 无规格没有“菜单栏”  此时menu.menu==null -->
+              <view class='num-wrap' wx:if="{{menu.menu == null}}">
+              <!-- 添加加减号 -->
+                <image wx:if="{{menu.num}}" src='jianhao.png' bindtap="reduceCart" data-id="{{menu.id}}" data-name="{{menu.name}}" data-price="{{menu.price}}" data-spec='{{menu.spec}}' data-num="{{menu.num}}" data-img="{{menu.img}}"></image> <!-- 绑定减事件 -->
+                <text wx:if="{{menu.num}}">{{menu.num}}</text><!-- 显示当前份数menu.num -->
+                <image src='add.png' bindtap="addCart" data-id="{{menu.id}}" data-name="{{menu.name}}" data-price="{{menu.price}}" data-spec='{{menu.spec}}' data-num="{{menu.num}}" data-img="{{menu.img}}"></image> <!-- 绑定加事件 -->
+              </view>
+
+              <!-- 对于有规格的菜品弹出“菜单栏”，让用户选择规格 -->
+              <view class='select-spec' wx:if="{{menu.menu && menu.menu.length > 1}}" bindtap="selectSpec" data-id="{{menu.id}}" data-classifyindex="{{classifyIndex}}" data-menuIndex="{{menuIndex}}">
+                选规格
+                <view class='icon-num' wx:if="{{menu.num > 0}}">{{menu.num}}</view><!-- 此处menu.num指选规格按钮右上方的计数 -->
+              </view>
+            </view>
+          </view>  
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+
+  <!-- 购物车 -->
+  <view class='shopping-cart-bg'>
+    <view class='shopping-cart'>
+      <view class='left-box'><!-- 左方菜篮子图标 -->
+        <view class='icon-wrap' bindtap="changeCardDetailStatus">
+          <image src='cailanzi.png' class='icon-card'></image>
+          <view class='icon-num' wx:if="{{cart.count > 0}}">{{cart.count}}</view><!-- cart.cout统计选择菜品数量 -->
+        </view>
+        <view class='price' wx:if="{{cart.count > 0}}">{{cart.total}}Kcal</view><!-- 在中部显示所有菜品所含能量总量 -->
+      </view>
+      <view class='right-box'><!-- 右方确定按钮 -->
+        <view bindtap='goSureOrder' wx:if="{{orderType === 0}}">确认</view><!-- 右方确定按钮，绑定事件进入结算界面 -->
+        <view bindtap='goEditOrder' wx:if="{{orderType === 1}}">确认修改</view><!--修改按钮 -->
+      </view>
+    </view>
+  </view>
+
+  <!-- 购物车详情 -->
+  <view class='cart-details' wx:if="{{cardDetailStatus}}">
+    <view class='mask' bindtap="changeCardDetailStatus"></view><!-- 绑定购物车操作按钮 -->
+    <view class='content'>
+      <view class='title'><!-- 标题栏 -->
+        <view class='left-box'>已选择菜品</view><!-- 左边显示菜品 -->
+        <view class='right-box' bindtap="clearCart"><!-- 右方显示清空操作 -->
+          <text>全部清空</text>
+          <image src='delete_icon.png'></image>
+        </view>
+      </view>
+
+      <view class='item-wrap'>
+        <view class='item' wx:for="{{localList}}" wx:for-item="order" wx:key="index">
+          <view class='goods-name'>{{order.name}}</view><!-- 菜品名字 -->
+          <view class='goods-spec'>{{order.spec}}</view><!-- 显示规格（如果有） -->
+          <view class='goods-price'>{{filters.toFix2(order.price*order.num)}}Kcal</view><!-- 计算总热量 -->
+          <view class='num-wrap'>
+            <image src='jianhao.png' bindtap="reduceCart" data-id="{{order.id}}" data-name="{{order.name}}" data-price="{{order.price}}" data-spec='{{order.spec}}' data-num="{{order.num}}"></image><!-- 减号实行减操作 -->
+            <text>{{order.num}}</text>
+            <image src='add.png' bindtap="addCart" data-id="{{order.id}}" data-name="{{order.name}}" data-price="{{order.price}}" data-spec='{{order.spec}}' data-num="{{order.num}}"></image><!-- 加号实行加操作 -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+ <!--规格界面 -->
+  <block wx:for="{{shop.data}}" wx:for-item="classify" wx:for-index="classifyIndex" wx:key="id" id="{{classify.id}}">
+    <block wx:for='{{classify.menu}}' wx:for-item="menu" wx:for-index="menuIndex" wx:key="id">
+      <block wx:if="{{menu.menu && menu.menu.length > 1}}">
+        <view class='select-spec-pop' wx:if="{{menu.id === activeSpecItemsId}}">
+          <view class='mask' catchtap="selectGoodsModalStatus"></view>
+          <view class='wrap'>
+            <view class='top-box text-hide1'>{{menu.name}}</view>
+            <view class='center-box'>
+              <view class='item' wx:for="{{menu.menu}}" wx:for-item="specItem" wx:key="index" wx:for-index="specIndex">
+                <view class='goods-spec'>{{specItem.spec}}</view>
+                <view class='goods-price'>{{specItem.price}}Kcal</view>
+                <view class='num-wrap'>
+                  <image wx:if="{{specItem.num}}" src='jianhao.png' bindtap="reduceCart" data-id="{{specItem.id}}" data-name="{{menu.name}}" data-price="{{specItem.price}}" data-spec='{{specItem.spec}}' data-num="{{specItem.num}}" data-img="{{menu.img}}"></image>
+                  <text wx:if="{{specItem.num}}">{{specItem.num}}</text>
+                  <image src='add.png' bindtap="addCart" data-id="{{specItem.id}}" data-name="{{menu.name}}" data-price="{{specItem.price}}" data-spec='{{specItem.spec}}' data-num="{{specItem.num}}" data-img="{{menu.img}}"></image>
+                </view>
+              </view>
+            </view>
+            <view class='bottom-box'>
+              <view class='left-box'>已选 {{menu.num}}份</view>
+              <view class='right-box'>合计卡路里：
+                <text>{{menu.total}}Kcal</text> </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </block>
+  <view class='mask-all-page' wx:if="{{maskAllPage === true}}"></view>
+</view>

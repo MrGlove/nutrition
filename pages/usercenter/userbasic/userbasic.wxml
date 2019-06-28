@@ -1,0 +1,57 @@
+<page>
+  <view class="container">
+    <view class='usersetting'>
+      <view class='section'>
+        <picker mode="date" value="{{date}}" start="1920-01-01" end="2019-01-01" bindchange="bindDateChange">
+          <view class='picker'>选择出生日期：{{date}}</view>
+        </picker>
+      </view>
+      <view class='wxinfo'>
+        <block>
+          <text>性别：</text>
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio">
+              男
+              <radio value="" checked="true" />
+            </label>
+            <label class="radio">
+              女
+              <radio value="" checked="" />
+            </label>
+          </radio-group>
+        </block>
+      </view>
+
+      <view class='wxinfo'>
+        <block class='wxinfo'>
+          <text>身高：</text>
+          <input type='digit' placeholder='请输入身高' bindinput='heightinput'></input>
+          <text>cm</text>
+        </block>
+      </view>
+
+      <view class='wxinfo'>
+        <block class='wxinfo'>
+          <text>体重：</text>
+          <input type='digit' placeholder='请输入体重' bindinput='weightinput'></input>
+          <text>kg</text>
+        </block>
+      </view>
+
+      <view class='usersetting'>选择特殊人群类型：</view>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{items}}">
+            <checkbox  value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+            <text>\n</text>
+          </label>
+        </checkbox-group>
+      </view>
+
+      <view class='wxinfo'>
+        <button type='primary' ontap='savechange'>保存</button>
+      </view>
+
+    </view>
+  </view>
+</page>

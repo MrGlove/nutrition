@@ -1,0 +1,19 @@
+<!--pages/usercenter/about/about.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src='../../../images/logo.png'></image>
+      
+      <text>\n\n</text>
+      <text>aaaaaaaaaaaaa</text>
+      <text>\n</text>
+      <text>bbbbbbbbb</text>
+      <text>\n</text>
+      <text>ccccccccccccc</text>
+      <text>\n\n\n</text>
+
+      <button type='primary' ontap='goback'>返回</button>
+      
+    </block>
+  </view>
+</view>

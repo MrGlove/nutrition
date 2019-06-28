@@ -1,0 +1,44 @@
+<!--logs.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="wxinfo">
+      <block class='wxinfo'>
+        <image class="wxinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="wxinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+  </view>
+
+  <view class="page__bd">
+    <view class="weui-cells">
+      <a ontap='gotosetting' class="weui-cell weui-cell_access" href="javascript:;">
+        <view class="weui-cell__bd">
+          <text>修改个人信息</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </a>
+      <a ontap='gotohistory' class="weui-cell weui-cell_access" href="javascript:;">
+        <view class="weui-cell__bd">
+          <text>查询就餐历史</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </a>
+      <a ontap='gotoadvise' class="weui-cell weui-cell_access" href="javascript:;">
+        <view class="weui-cell__bd">
+          <text>提出建议</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </a>
+      <a ontap='gotoabout' class="weui-cell weui-cell_access" href="javascript:;">
+        <view class="weui-cell__bd">
+          <text>关于</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </a>
+    </view>
+  </view>
+</view>

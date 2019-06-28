@@ -1,0 +1,270 @@
+<!--导航条-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+
+<!--1.营养中心-->
+<view hidden="{{currentTab!==0}}">
+
+  <!--三个模块摄入量统计-->
+  <view class="content0">
+    <view class="content01" style="flex:1;height:75px;background-color:lightyellow">
+      <view class='content01_text1'>
+        <text>已摄入：</text>
+      </view>
+      <view class='content01_text2'>
+        <text>{{text[0]}}</text>
+      </view>
+      <view class='content01_text3'>
+        <text>Kcal</text>
+      </view>
+    </view>
+    <view class="content02" style="flex:1;height:75px;background-color:lightgreen">
+      <view class='content01_text1'>
+        <text>推荐摄入：</text>
+      </view>
+      <view class='content01_text2'>
+        <text>{{text[1]}}</text>
+      </view>
+      <view class='content01_text3'>
+        <text>Kcal</text>
+      </view>
+    </view>
+    <view class="content03" style="flex:1;height:75px;background-color:lightyellow">
+      <view class='content01_text1'>
+        <text>还需摄入：</text>
+      </view>
+      <view class='content01_text2'>
+        <text>{{text[2]}}</text>
+      </view>
+      <view class='content01_text3'>
+        <text>Kcal</text>
+      </view>
+    </view>
+  </view>
+
+  <!--分割条-->
+  <view>
+    <view style="flex:1;height:15px;background-color:lightgray"></view>
+  </view>
+
+  <!--四大营养素表格-->
+  <view class="content2">
+    <view class="content21" style="flex:1;height:27px;">
+      <view class='content22_text1'>
+        <text>蛋白质：</text>
+      </view>
+      <view class='content22_text2'>
+        <text>{{text2[0]}}</text>
+      </view>
+      <view class='content22_text3'>
+        <text>Kcal</text>
+      </view>
+
+      <view class='content22_text4'>
+        <text>%</text>
+      </view>
+      <view class='content22_text5'>
+        <text>{{text1[0]}}</text>
+      </view>
+    </view>
+
+    <view class="content22" style="flex:1;height:27px;">
+      <view class='content22_text1'>
+        <text>脂肪：</text>
+      </view>
+      <view class='content22_text2'>
+        <text>{{text2[1]}}</text>
+      </view>
+      <view class='content22_text3'>
+        <text>Kcal</text>
+      </view>
+      <view class='content22_text4'>
+        <text>%</text>
+      </view>
+      <view class='content22_text5'>
+        <text>{{text1[1]}}</text>
+      </view>
+    </view>
+
+    <view class="content23" style="flex:1;height:27px;">
+      <view class='content22_text1'>
+        <text>碳水化合物：</text>
+      </view>
+      <view class='content22_text2'>
+        <text>{{text2[2]}}</text>
+      </view>
+      <view class='content22_text3'>
+        <text>Kcal</text>
+      </view>
+      <view class='content22_text4'>
+        <text>%</text>
+      </view>
+      <view class='content22_text5'>
+        <text>{{text1[2]}}</text>
+      </view>
+
+    </view>
+
+    <view class="content24" style="flex:1;height:27px;">
+      <view class='content22_text1'>
+        <text>膳食纤维：</text>
+      </view>
+      <view class='content22_text2'>
+        <text>{{text2[3]}}</text>
+      </view>
+      <view class='content22_text3'>
+        <text>Kcal</text>
+      </view>
+      <view class='content22_text4'>
+        <text>%</text>
+      </view>
+      <view class='content22_text5'>
+        <text>{{text1[3]}}</text>
+      </view>
+    </view>
+
+  </view>
+
+  <!--分割条-->
+  <view>
+    <view style="flex:1;height:15px;background-color:lightgray"></view>
+  </view>
+
+  <!--两个表格-->
+  <view class="content1">
+    <text>四大营养素供能比</text>
+    <canvas canvas-id="pieCanvas1" class="canvas"></canvas>
+
+    <!--分割条-->
+    <view>
+      <view style="flex:1;height:15px;background-color:lightgray"></view>
+    </view>
+
+    <text>三餐热量比</text>
+    <canvas canvas-id="pieCanvas2" class="canvas"></canvas>
+    <!--<canvas canvas-id="columnCanvas" class="canvas"></canvas>-->
+  </view>
+
+  <!--分割条-->
+  <view>
+    <view style="flex:1;height:15px;background-color:lightgray"></view>
+  </view>
+
+</view>
+<!--1.营养中心的view-->
+
+
+<!--2.菜谱中心-->
+<view hidden="{{currentTab!==1}}">
+  <!--2.（1）搜索框-->
+  <view class='page_row' bindtap="suo">
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='35' type='search'></icon>
+        <input class="" disabled placeholder="请输入食物关键字" value="{{searchValue}}" />
+      </view>
+    </view>
+    <view class='sousuo'>搜索</view>
+  </view>
+  <!--2.（2）侧栏分类-->
+  <!--主盒子-->
+  <view class="container">
+    <!-- 左侧栏 -->
+    <view class='nav_left'>
+      <view class="nav_left_items {{curNav == 1 ? 'active' : ''}}" bindtap="switchRightTab" data-id="1">
+        水果类
+      </view>
+
+      <view class="nav_left_items {{curNav == 2 ? 'active' : ''}}" bindtap="switchRightTab" data-id="2">
+        饮品
+      </view>
+
+      <view class="nav_left_items {{curNav == 3 ? 'active' : ''}}" bindtap="switchRightTab" data-id="3">
+        蔬菜
+      </view>
+
+      <view class="nav_left_items {{curNav == 4 ? 'active' : ''}}" bindtap="switchRightTab" data-id="4">
+        水产类
+      </view>
+      <view class="nav_left_items {{curNav == 5 ? 'active' : ''}}" bindtap="switchRightTab" data-id="5">
+        主食类
+      </view>
+      <view class="nav_left_items {{curNav == 6 ? 'active' : ''}}" bindtap="switchRightTab" data-id="6">
+        肉类
+      </view>
+      <view class="nav_left_items {{curNav == 7 ? 'active' : ''}}" bindtap="switchRightTab" data-id="7">
+        其他
+      </view>
+    </view>
+
+    <!-- 右侧栏 -->
+    <view class="nav_right">
+      <view wx:if="{{curNav==1}}">
+        <view class="nav_right_items">
+          <image src="icon2.png"></image>
+          <text>猕猴桃</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src="icon3.png"></image>
+          <text>龙眼</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>橘子</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>火龙果</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>草莓</text>
+        </view>
+      </view>
+
+      <view wx:if="{{curNav==2}}">
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>夏威夷果</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>开心果</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>碧根果</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>芒果</text>
+        </view>
+
+      </view>
+      <view wx:if="{{curNav==3}}">
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>花椰菜</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>生菜</text>
+        </view>
+
+        <view class="nav_right_items">
+          <image src=""></image>
+          <text>番茄</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

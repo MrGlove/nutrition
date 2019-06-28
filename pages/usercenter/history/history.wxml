@@ -1,0 +1,17 @@
+<!--pages/usercenter/history/history.wxml-->
+<view class='wxinfo'>
+  <block>
+    <button size='mini' disabled='{{judgeprevious}}' ontap='previousday'>前一天</button>
+    <label>{{date}}</label>
+    <button size='mini' disabled='{{judgenext}}' ontap='nextday'>后一天</button>
+  </block>
+</view>
+<view class='usersetting'>
+  <block>
+    <label>这下面是分析</label>
+    <text>\n\n\n</text>
+    <label>这下面是分析</label>
+    <text>\n\n\n</text>
+    <label>这下面是分析</label>
+  </block>
+</view>

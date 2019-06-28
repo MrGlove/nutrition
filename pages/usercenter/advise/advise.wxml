@@ -1,0 +1,14 @@
+<!--pages/usercenter/advise/advise.wxml-->
+
+<view class='usersetting'>
+  <view>
+    <text>提出你的建议：</text>
+  </view>
+  <text>\n\n</text>
+  <view class='section'>
+    <textarea auto-focus='true' auto-height='true' placeholder="在此输入" placeholder-style='color:gray' show-confirm-bar='true' bindinput='textinput' bindconfirm='finish'></textarea>
+  </view>
+  <view class='wxinfo'>
+    <button ontap='back' type='primary'>提交</button>
+  </view>
+</view>

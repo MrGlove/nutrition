@@ -1,0 +1,29 @@
+/* pages/first/first.wxss */
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.motto {
+  font-size: 70rpx;
+  color: rgb(0, 0, 0);
+}
+
+.btn{
+  background-color:  rgba(247, 149, 1, 0.945);
+  color: rgb(255, 255, 255);
+}
