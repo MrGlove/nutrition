@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/test/main",
     "pages/first/first",
     "pages/usercenter/history/history",
     "pages/usercenter/login",
@@ -7,8 +8,7 @@
     "pages/usercenter/userbasic/userbasic",
     "pages/usercenter/advise/advise",
     "pages/usercenter/about/about",
-    "pages/basket/basket",
-    "pages/test/main"
+    "pages/basket/basket"
   ],
   "window": {
     "backgroundTextStyle": "light",

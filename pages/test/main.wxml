@@ -6,7 +6,7 @@
 <!--1.营养中心-->
 <view hidden="{{currentTab!==0}}">
 
-  <!--三个模块摄入量统计-->
+  <!--   
   <view class="content0">
     <view class="content01" style="flex:1;height:75px;background-color:lightyellow">
       <view class='content01_text1'>
@@ -43,7 +43,61 @@
     </view>
   </view>
 
-  <!--分割条-->
+  <view>
+    <view style="flex:1;height:15px;background-color:lightgray"></view>
+  </view>
+   -->
+  <view class='suggest'>推荐摄入{{text[1]}}Kcal</view>
+
+  <view class='row'>
+    <view class='col'>
+      <view class='col-1'>已摄入{{text[0]}}Kcal</view>
+      <view class='col-2'>{{pctg}}%</view>
+      <view class='col-3'>还需摄入{{text[2]}}Kcal</view>
+    </view>
+  </view>
+  <progress percent='{{pctg}}' border-radius='50' stroke-width='11' activecolor='#32CD32' backgroundColor='#FFC125' active='true'></progress>
+
+  <view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+  </view>
+  <view>
+    <view style="flex:1;height:15px;background-color:lightgray"></view>
+  </view>
+
+  <view class='row'>
+    <view class='col'>
+      <view class='col-4'>
+      <text>
+      蛋白质 {{text1[0]}}%</text>
+      <text>\n</text>
+      <text>{{text2[0]}} Kcal</text>
+      </view>
+      <view class='col-5'>
+      <text>
+      脂肪 {{text1[1]}}%</text>
+      <text>\n</text>
+      <text>{{text2[1]}} Kcal</text>
+      </view>
+    </view>
+  </view>  
+  <view class='row'>
+    <view class='col'>
+      <view class='col-6'>
+      <text>
+      碳水化合物 {{text1[2]}}%</text>
+      <text>\n</text>
+      <text>{{text2[2]}}  Kcal</text>
+      </view>
+      <view class='col-7'>
+      <text>
+      膳食纤维 {{text1[3]}}%</text>
+      <text>\n</text>
+      <text>{{text2[3]}} Kcal</text>
+      </view>
+    </view>
+  </view>
+
   <view>
     <view style="flex:1;height:15px;background-color:lightgray"></view>
   </view>

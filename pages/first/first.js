@@ -52,6 +52,20 @@ Page({
   gotoinit: function(e) {
     console.log(e)
     console.log(app.globalData.userInfo)
+
+    /* wx.request({
+      url: '服务器接口地址，必须是https协议',
+      data{
+        ...
+      },
+      header:{
+        'content-type':'application/json'
+      },
+      success(res){
+        console.log(res.data)
+      }
+    }) */
+
     wx.redirectTo({
       url: '../init/init'
     })
