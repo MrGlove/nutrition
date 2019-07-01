@@ -1,14 +1,16 @@
 {
   "pages": [
+    "pages/basket/basket",
     "pages/test/main",
     "pages/first/first",
+    
     "pages/usercenter/history/history",
     "pages/usercenter/login",
     "pages/init/init",
     "pages/usercenter/userbasic/userbasic",
     "pages/usercenter/advise/advise",
-    "pages/usercenter/about/about",
-    "pages/basket/basket"
+    "pages/usercenter/about/about"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

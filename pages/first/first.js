@@ -53,18 +53,19 @@ Page({
     console.log(e)
     console.log(app.globalData.userInfo)
 
-    /* wx.request({
-      url: '服务器接口地址，必须是https协议',
-      data{
-        ...
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5d19a6d980f4b94bdfd2e9be/example/query?name={}',
+      data: {
+        age:'18'
       },
+      method: 'GET',
       header:{
         'content-type':'application/json'
       },
-      success(res){
-        console.log(res.data)
+      success: function(e){
+        console.log(e)
       }
-    }) */
+    }) 
 
     wx.redirectTo({
       url: '../init/init'
