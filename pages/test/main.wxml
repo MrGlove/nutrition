@@ -68,32 +68,32 @@
   <view class='row'>
     <view class='col'>
       <view class='col-4'>
-      <text>
+        <text>
       蛋白质 {{text1[0]}}%</text>
-      <text>\n</text>
-      <text>{{text2[0]}} Kcal</text>
+        <text>\n</text>
+        <text>{{text2[0]}} Kcal</text>
       </view>
       <view class='col-5'>
-      <text>
+        <text>
       脂肪 {{text1[1]}}%</text>
-      <text>\n</text>
-      <text>{{text2[1]}} Kcal</text>
+        <text>\n</text>
+        <text>{{text2[1]}} Kcal</text>
       </view>
     </view>
-  </view>  
+  </view>
   <view class='row'>
     <view class='col'>
       <view class='col-6'>
-      <text>
+        <text>
       碳水化合物 {{text1[2]}}%</text>
-      <text>\n</text>
-      <text>{{text2[2]}}  Kcal</text>
+        <text>\n</text>
+        <text>{{text2[2]}}  Kcal</text>
       </view>
       <view class='col-7'>
-      <text>
+        <text>
       膳食纤维 {{text1[3]}}%</text>
-      <text>\n</text>
-      <text>{{text2[3]}} Kcal</text>
+        <text>\n</text>
+        <text>{{text2[3]}} Kcal</text>
       </view>
     </view>
   </view>
@@ -103,7 +103,7 @@
   </view>
 
   <!--四大营养素表格-->
-  <view class="content2">
+  <!-- <view class="content2">
     <view class="content21" style="flex:1;height:27px;">
       <view class='content22_text1'>
         <text>蛋白质：</text>
@@ -178,7 +178,7 @@
       </view>
     </view>
 
-  </view>
+  </view> -->
 
   <!--分割条-->
   <view>
@@ -186,7 +186,7 @@
   </view>
 
   <!--两个表格-->
-  <view class="content1">
+  <view class="pie">
     <text>四大营养素供能比</text>
     <canvas canvas-id="pieCanvas1" class="canvas"></canvas>
 
@@ -212,15 +212,35 @@
 <!--2.菜谱中心-->
 <view hidden="{{currentTab!==1}}">
   <!--2.（1）搜索框-->
-  <view class='page_row' bindtap="suo">
+  <!-- <view class='page_row' bindtap="suo">
     <view class="search">
       <view class="df search_arr">
-        <icon class="searchcion" size='35' type='search'></icon>
+        <icon class="searchicon" size='35' type='search'></icon>
         <input class="" disabled placeholder="请输入食物关键字" value="{{searchValue}}" />
       </view>
     </view>
     <view class='sousuo'>搜索</view>
+  </view> -->
+  <view>
+    <view style="flex:1;height:5px"></view>
   </view>
+  <view class='row'>
+    <view class='col'>
+      <view class='col-search-1'>
+        <icon size='45' type='search'></icon>
+      </view>
+      <view class='col-search-2'>
+        <input disabled placeholder="请输入食物关键字" value="{{searchValue}}" />
+      </view>
+      <view class='col-search-3'>
+        <button class='searchbtn'>搜索</button>
+      </view>
+    </view>
+  </view>
+
+  <view style="flex:1;height:5px"></view>
+  <view style="flex:1;height:1px;background-color:#07c500"></view>
+  
   <!--2.（2）侧栏分类-->
   <!--主盒子-->
   <view class="container">

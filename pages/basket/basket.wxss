@@ -497,7 +497,7 @@ page {
   z-index: 99999;
 }
 
-.search {
+/* .search {
   width: 100%;
 }
 
@@ -527,7 +527,7 @@ page {
   text-align: center;
   border: 1px solid #d0d0d0;
   border-radius: 10rpx;
-  background: #fff; /* 背景色变成白色 */
+  background: #fff; 
   color: #3385ff;
   font-size: 30px;
 }
@@ -545,7 +545,7 @@ page {
   width: 20px;
   height: 20px;
   text-align: center;
-}
+} */
 
 .row {
   display: block;
@@ -565,7 +565,6 @@ page {
   margin-left: 5px;
   width: 15%;
   display: flex;
-  
   text-align: center;
   color: #32CD32;
 }
@@ -574,7 +573,6 @@ page {
   width: 65%;
   margin-top: 10px;
   display: flex;
-  
   font-size: 25px;
   color: #32CD32;
 }
@@ -589,6 +587,7 @@ page {
 .searchbtn{
   display: flex;
   margin-top: 2px;
+  border: 2px solid #d0d0d0;
   justify-content: center;
   font-size: 17px;
   background-color: rgb(255, 215, 35);

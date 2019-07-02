@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/basket/basket",
     "pages/test/main",
     "pages/first/first",
-    
+    "pages/basket/basket",  
     "pages/usercenter/history/history",
     "pages/usercenter/login",
     "pages/init/init",

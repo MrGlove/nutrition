@@ -25,6 +25,8 @@
     </view>
   </view>
 </view>
+<view style="flex:1;height:4px"></view>
+<view style="flex:1;height:2px;background-color:#EC6941"></view>
 
 <!--  -->
 <!-- 2.添加整个盒子布局-->
