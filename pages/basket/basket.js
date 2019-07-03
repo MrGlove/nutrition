@@ -25,11 +25,6 @@ Page({
       fat_total: 0, //脂肪含量
       carbohydrate_total: 0, //碳水化合物含量
       dietary_fiber_total: 0, //膳食纤维含量
-
-
-
-
-
     },
     localList: [],
     addAppMaskStatus: true,
@@ -513,6 +508,7 @@ Page({
     var list = this.data.cartList;
     var sortedList = {};
     var index; // 购物车中相同id index
+    console.log(this.data.cartList);
 
     if (index = this.checkOrderSameId(id)) { //相同商品id
       sortedList = list[index];
