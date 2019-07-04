@@ -50,6 +50,7 @@ Page({
   //事件处理函数
 
   onLoad: function() {
+    
     if (app.globalData.userInfo) {
       this.setData({
         wxInfo: app.globalData.userInfo,
@@ -117,6 +118,23 @@ Page({
   gotofirstpage: function(e) {
     if(this.data.height){
       if(this.data.weight){
+        /* wx.request({
+          url: '',
+        }) */
+        wx.setStorage({
+          key: 'uniqueid',
+          data: app.globalData.uniqueid,
+          success: function (res) {
+            console.log('保存唯一id成功')
+          }
+        })
+        wx.setStorage({
+          key: 'currentinfo',
+          data: app.globalData.userInfo,
+          success: function (res) {
+            console.log('保存用户信息成功')
+          }
+        })
         wx.switchTab({
           url: '../usercenter/login'
         })

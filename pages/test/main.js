@@ -47,15 +47,25 @@ Page({
   },
   onLoad: function(option) {
     var that = this;
-    wx.getStorage({
-      //获取本地缓存
-      key: "pass_num",
-      success: function(res) {
-        that.setData({
-          pass_num: res.data
-        });
+
+    wx.request({
+      url: 'https://paytest.sdses.com/接口目录',
+      method: 'POST',
+      data: {
+        x: ''
+      },
+      header: {
+        "content_Type": "application/x-www-form-urlencoded"
+      },
+      success: function (e) {
+        console.log(e.data)
       },
     })
+
+    /* wx.getStorage({
+      获取本地缓存
+      
+    }) */
 
 
 

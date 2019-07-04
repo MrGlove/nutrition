@@ -5,6 +5,7 @@ var OPENID=''
 
 Page({
   data: {
+    testinfo: '001',
     motto: 'Hello',
     userInfo: {},
     hasUserInfo: false,
@@ -13,12 +14,33 @@ Page({
   //事件处理函数
 
   onLoad: function() {
-    /* wx.getStorage({
+    
+    wx.getStorage({
       key: 'uniqueid',
-      success: function (res) {这里要实现再次登录的跳转
+      success: function (res) {
         console.log(res.data);
+        wx.switchTab({
+          url: '../usercenter/login'
+        })
       },
-    }) */
+    })
+
+    wx.request({
+      url: 'https://zh123456eng.xyz/smartdiet/project/BMR',
+      method:'POST',
+      header:{
+        'content-type':'application/x-www-form-urlencoded'
+      },
+      data: {
+        /* userid:'001' */
+        userid: '002'
+      },
+      success: function (v) {
+        console.log(v.data)
+      },
+    })
+
+    
 
     if (app.globalData.userInfo) {
       this.setData({
@@ -47,6 +69,7 @@ Page({
         }
       })
     }
+
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -77,30 +100,26 @@ Page({
             success:function(v) {
               console.log(v.data)
               var topenid = v.data.openid
-              wx.setStorage({
+              app.globalData.uniqueid = topenid
+              console.log(app.globalData.uniqueid)
+              /* wx.setStorage({
                 key: 'uniqueid',
                 data: topenid,
                 success:function(res){
                   console.log('保存成功')
                 }
-              })
-              wx.getStorage({
-                key: 'uniqueid',
-                success: function(res) {
-                  console.log(res.data);
-                },
-              })
+              }) */
             },
           })
-          
+          wx.redirectTo({
+            url: '../init/init'
+          })
         } else {
           console.log('登录失败！' + res.errMsg)
         }
+        
       }
     });
 
-    wx.redirectTo({
-      url: '../init/init'
-    })
   }
 })

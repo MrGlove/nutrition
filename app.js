@@ -2,9 +2,29 @@
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var openid = ''
+    var nowinfo = {}
+    var that = this
+    /* wx.clearStorage() */
+    wx.getStorage({
+      key: 'uniqueid',
+      success: function (res) {
+        openid = res.data
+        console.log(openid)
+        that.globalData.uniqueid = res.data
+        console.log(that.globalData.uniqueid)
+      }
+    }) 
+    wx.getStorage({
+      key: 'currentinfo',
+      success: function (res) {
+        nowinfo = res.data
+        console.log(nowinfo)
+        that.globalData.userInfo = res.data
+        console.log(that.globalData.userInfo)
+      }
+    }) 
+    
   },
   getUserInfo:function(cb){
     var that = this

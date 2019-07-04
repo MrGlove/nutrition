@@ -55,7 +55,7 @@
       </view>
 
       <view class='wxinfo'>
-        <button class='btn' type='primary' ontap='gotofirstpage2'>保存</button>
+        <button class='btn' type='primary' ontap='gotofirstpage'>保存</button>
       </view>
 
       <view>

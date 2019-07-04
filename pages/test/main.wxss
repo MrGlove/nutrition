@@ -123,13 +123,38 @@ page {
   background-color: #b3fc60;
 }
 
-.row {
+.row-1 {
   display: block;
   margin: 0px;
+  background: linear-gradient(to right, rgb(34, 192, 60), white);
+}
+
+.row-2 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(98, 168, 235), white);
+}
+
+.row-3 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(226, 186, 74), white);
+}
+
+.row-4 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(238, 255, 88), white);
+}
+
+.col2x2 {
+  display: flex;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
 }
 
 .col {
   display: flex;
+  padding: 10rpx;
   font-family: -apple-system-font, "Helvetica Neue", sans-serif;
 }
 
@@ -203,6 +228,34 @@ page {
   font-size: 16px;
   color: rgb(0, 0, 0);
   background: linear-gradient(to bottom right, rgb(238, 255, 88), white);
+}
+
+.col-L1 {
+  width: 35%;
+  text-align: right;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L2 {
+  width: 15%;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L3 {
+  width: 23%;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L4 {
+  width: 27%;
+  text-align: left;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
 }
 
 /*两个扇形图布局*/
@@ -361,7 +414,7 @@ page {
   width: 65%;
   margin-top: 10px;
   display: flex;
-  font-size: 25px;
+  font-size: 19px;
   color: #32cd32;
 }
 

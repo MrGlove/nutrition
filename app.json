@@ -1,12 +1,14 @@
 {
   "pages": [
+    
     "pages/first/first",
+    "pages/init/init",
     "pages/test/main",
     
     "pages/basket/basket",  
     "pages/usercenter/history/history",
     "pages/usercenter/login",
-    "pages/init/init",
+    
     "pages/usercenter/userbasic/userbasic",
     "pages/usercenter/advise/advise",
     "pages/usercenter/about/about"
@@ -23,20 +25,20 @@
       {
         "pagePath": "pages/test/main",
         "text": "首页",
-        "iconPath": "images/icon_speed.png",
-        "selectedIconPath": "images/icon_speed_HL.png"
+        "iconPath": "images/yingyang1.png",
+        "selectedIconPath": "images/yingyang2.png"
       },
       {
         "pagePath": "pages/basket/basket",
         "text": "添加菜品",
-        "iconPath": "images/icon_seo.png",
-        "selectedIconPath": "images/icon_seo_HL.png"
+        "iconPath": "images/jiahao2.png",
+        "selectedIconPath": "images/jiahao1.png"
       },
       {
         "pagePath": "pages/usercenter/login",
         "text": "用户中心",
-        "iconPath": "images/icon_account.png",
-        "selectedIconPath": "images/icon_account_HL.png"
+        "iconPath": "images/yonghu1.png",
+        "selectedIconPath": "images/yonghu2.png"
       }
     ]
   },

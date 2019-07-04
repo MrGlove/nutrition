@@ -573,7 +573,7 @@ page {
   width: 65%;
   margin-top: 10px;
   display: flex;
-  font-size: 25px;
+  font-size: 19px;
   color: #32CD32;
 }
 

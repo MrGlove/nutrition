@@ -62,11 +62,11 @@
     <view style="flex:1;height:15px;background-color:white"></view>
   </view>
   <view>
-    <view style="flex:1;height:15px;background-color:lightgray"></view>
+    <view style="flex:1;height:15px;background-color:white"></view>
   </view>
 
   <view class='row'>
-    <view class='col'>
+    <view class='col2x2'>
       <view class='col-4'>
         <text>
       蛋白质 {{text1[0]}}%</text>
@@ -82,7 +82,7 @@
     </view>
   </view>
   <view class='row'>
-    <view class='col'>
+    <view class='col2x2'>
       <view class='col-6'>
         <text>
       碳水化合物 {{text1[2]}}%</text>
@@ -99,8 +99,45 @@
   </view>
 
   <view>
-    <view style="flex:1;height:15px;background-color:lightgray"></view>
+    <view style="flex:1;height:15px;background-color:white"></view>
   </view>
+
+  <view class='row-1'>
+    <view class='col'>
+      <view class='col-L1'>蛋白质</view>
+      <view class='col-L2'>{{text1[0]}}%</view>
+      <view class='col-L3'>共{{text2[0]}}</view>
+      <view class='col-L4'>Kcal</view> 
+    </view>
+  </view>
+
+  <view class='row-2'>
+    <view class='col'>
+      <view class='col-L1'>脂肪</view>
+      <view class='col-L2'>{{text1[1]}}%</view>
+      <view class='col-L3'>共{{text2[1]}}</view>
+      <view class='col-L4'>Kcal</view>
+    </view>
+  </view>
+
+  <view class='row-3'>
+    <view class='col'>
+      <view class='col-L1'>碳水化合物</view>
+      <view class='col-L2'>{{text1[2]}}%</view>
+      <view class='col-L3'>共{{text2[2]}}</view>
+      <view class='col-L4'>Kcal</view>
+    </view>
+  </view>
+
+  <view class='row-4'>
+    <view class='col'>
+      <view class='col-L1'>膳食纤维</view>
+      <view class='col-L2'>{{text1[3]}}%</view>
+      <view class='col-L3'>共{{text2[3]}} </view>
+      <view class='col-L4'> Kcal</view>
+    </view>
+  </view>
+
 
   <!--四大营养素表格-->
   <!-- <view class="content2">
@@ -182,7 +219,7 @@
 
   <!--分割条-->
   <view>
-    <view style="flex:1;height:15px;background-color:lightgray"></view>
+    <view style="flex:1;height:15px;background-color:white"></view>
   </view>
 
   <!--两个表格-->
@@ -192,7 +229,7 @@
 
     <!--分割条-->
     <view>
-      <view style="flex:1;height:15px;background-color:lightgray"></view>
+      <view style="flex:1;height:15px;background-color:white"></view>
     </view>
 
     <text>三餐热量比</text>
@@ -202,7 +239,7 @@
 
   <!--分割条-->
   <view>
-    <view style="flex:1;height:15px;background-color:lightgray"></view>
+    <view style="flex:1;height:15px;background-color:white"></view>
   </view>
 
 </view>
@@ -240,7 +277,7 @@
 
   <view style="flex:1;height:5px"></view>
   <view style="flex:1;height:1px;background-color:#07c500"></view>
-  
+
   <!--2.（2）侧栏分类-->
   <!--主盒子-->
   <view class="container">
