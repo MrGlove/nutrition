@@ -4,6 +4,7 @@ const app = getApp()
 Page({
   data: {
     date: '2000-01-01',
+    uniformdate: '20000101',
     height: '',
     weight: '',
     genders: [{
@@ -18,31 +19,19 @@ Page({
     ],
     sexindex: 0,
     items: [{
-        name: 'A',
-        value: 'AAAAA'
+        name: '孕妇',
+        value: '孕妇'
       },
       {
-        name: 'B',
-        value: 'BBB',
-        checked: 'true'
+        name: '高血压',
+        value: '高血压'
       },
       {
-        name: 'C',
-        value: 'CCC'
+        name: '糖尿病',
+        value: '糖尿病'
       },
-      {
-        name: 'D',
-        value: 'DDD'
-      },
-      {
-        name: 'E',
-        value: 'EEE'
-      },
-      {
-        name: 'F',
-        value: 'FFF'
-      }
     ],
+    disease:'',
     wxInfo: {},
     haswxInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -90,14 +79,16 @@ Page({
   bindDateChange: function(e) {
     console.log('change,value=', e.detail.value)
     this.setData({
-      date: e.detail.value
+      date: e.detail.value,
     })
+    
   },
   heightinput: function(e) {
     console.log('change,height=', e.detail.value)
     this.setData({
       height: e.detail.value
     })
+    
   },
   weightinput: function(e) {
     console.log('change,weight=', e.detail.value)
@@ -114,6 +105,9 @@ Page({
   },
   checkboxChange: function(e) {
     console.log('changecheckbox', e.detail.value)
+    this.setData({
+      disease: e.detail.value
+    })
   },
   gotofirstpage: function(e) {
     if(this.data.height){
@@ -135,6 +129,27 @@ Page({
             console.log('保存用户信息成功')
           }
         })
+        
+        console.log(app.globalData.uniqueid)
+
+        var date2 = this.data.date.split("-")
+        var str = date2.join("")
+        this.setData({
+          uniformdate:str,
+        })
+        console.log(this.data.uniformdate)
+
+        var uniformsex = this.data.genders[this.data.sexindex].value
+        console.log(uniformsex)
+        console.log(this.data.height)
+        console.log(this.data.weight)
+        var uniformdisease = this.data.disease.join("+")  
+        console.log(uniformdisease)
+
+        /* wx.request({
+          url: '',
+        }) */
+
         wx.switchTab({
           url: '../usercenter/login'
         })

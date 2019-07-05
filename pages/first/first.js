@@ -33,7 +33,7 @@ Page({
       },
       data: {
         /* userid:'001' */
-        userid: '002'
+        userid: '001'
       },
       success: function (v) {
         console.log(v.data)

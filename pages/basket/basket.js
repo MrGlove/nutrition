@@ -45,6 +45,11 @@ Page({
       icon: 'loading',
       duration: 2000
     })
+    //存储options.time的值，下面调用并传给接口
+    try {
+      wx.setStorageSync('time', options)
+    } catch (e) {}
+
     // 下单类型
     console.log(options, 'orderTypeorderTypeorderTypeorderTypeorderType')
     if (options.type) {
@@ -748,7 +753,6 @@ Page({
     wx.setStorage({
       key: 'pass_num',
       data: passed_total,
-
     })
     var that = this;
     wx.showModal({
@@ -756,6 +760,33 @@ Page({
       content: '点击取消可继续选菜或修改所选菜品',
       success(res) {
         if (res.confirm) {
+          console.log(that.data.cartList);
+          //调用time本地缓存，获取区分早中晚餐[0,1,2]
+          wx.getStorage({
+            key: 'time',
+            success: function(res) {
+              console.log(res.data)
+            }
+          })
+
+          //获取本地当前时间，每确定一次都会log一次
+          var currenTime = util.formatTime(new Date());
+          console.log(currenTime)
+          
+          /* wx.request({
+            url: '',
+            data:{
+               把本餐的数据传给数据库
+            },
+            method:'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success:function(e){
+
+            }
+          }) */
+
           that.setData({
             cart: {
               count: 0,

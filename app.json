@@ -1,7 +1,8 @@
 {
   "pages": [
-    
     "pages/first/first",
+    "pages/select_time/select_time",
+    
     "pages/init/init",
     "pages/test/main",
     
@@ -29,7 +30,7 @@
         "selectedIconPath": "images/yingyang2.png"
       },
       {
-        "pagePath": "pages/basket/basket",
+        "pagePath": "pages/select_time/select_time",
         "text": "添加菜品",
         "iconPath": "images/jiahao2.png",
         "selectedIconPath": "images/jiahao1.png"

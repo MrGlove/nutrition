@@ -1,0 +1,26 @@
+<text class="text_time01">请选择要添加哪一顿就餐</text>
+
+<view class='imagesize'>
+  <image bindtap="breakfast" src="zaocan.jpg" class='in-image'></image>
+</view>
+<text class="text_time">早餐</text>
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+
+<view class='imagesize'>
+  <image bindtap="lunch" src="wucan.jpg" class='in-image'></image>
+</view>
+<text class="text_time">午餐</text>
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+
+<view class='imagesize'>
+  <image bindtap="dinner" src="wancan.jpg" class='in-image'></image>
+</view>
+<text class="text_time">晚餐</text>
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+

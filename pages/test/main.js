@@ -48,19 +48,20 @@ Page({
   onLoad: function(option) {
     var that = this;
 
-    wx.request({
-      url: 'https://paytest.sdses.com/接口目录',
+    /* wx.request({
+      url: 'https://zh123456eng.xyz/接口目录',
       method: 'POST',
       data: {
-        x: ''
+        date: ''获取本日的就餐情况
       },
       header: {
         "content_Type": "application/x-www-form-urlencoded"
       },
       success: function (e) {
         console.log(e.data)
+        页面数据的设置
       },
-    })
+    }) */
 
     /* wx.getStorage({
       获取本地缓存

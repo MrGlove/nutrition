@@ -5,12 +5,12 @@ App({
     var openid = ''
     var nowinfo = {}
     var that = this
-    /* wx.clearStorage() */
+    wx.clearStorage()
     wx.getStorage({
       key: 'uniqueid',
       success: function (res) {
         openid = res.data
-        console.log(openid)
+        /* console.log(openid) */
         that.globalData.uniqueid = res.data
         console.log(that.globalData.uniqueid)
       }
@@ -19,7 +19,7 @@ App({
       key: 'currentinfo',
       success: function (res) {
         nowinfo = res.data
-        console.log(nowinfo)
+        /* console.log(nowinfo) */
         that.globalData.userInfo = res.data
         console.log(that.globalData.userInfo)
       }
