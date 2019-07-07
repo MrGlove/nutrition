@@ -5,7 +5,7 @@ App({
     var openid = ''
     var nowinfo = {}
     var that = this
-    wx.clearStorage()
+    /* wx.clearStorage() */
     wx.getStorage({
       key: 'uniqueid',
       success: function (res) {

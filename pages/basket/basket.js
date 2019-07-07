@@ -3,6 +3,8 @@ const app = getApp();
 
 const ajax = app.globalData.ajax;
 
+var ptime;
+
 
 
 Page({
@@ -39,6 +41,22 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+
+    wx.request({
+      url: 'https://zh123456eng.xyz/smartdiet/project/dishesbykeyword',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        keyword: ''
+      },
+      success: function (v) {
+        console.log(123)
+        console.log(v.data)
+      },
+    })
+
     // 开启遮罩层
     wx.showToast({
       title: '加载中',
@@ -130,10 +148,6 @@ Page({
             "price": 220,
             "total": 0,
             "num": 0,
-            "protein": 60, //蛋白质含量
-            "fat": 20, //脂肪含量
-            "carbohydrate": 40, //碳水化合物含量
-            "dietary_fiber": 10, //膳食纤维含量
             "menu": null
           }, {
             "id": 12,
@@ -143,10 +157,6 @@ Page({
             "price": 13,
             "total": 0,
             "num": 0,
-            "protein": 60, //蛋白质含量
-            "fat": 20, //脂肪含量
-            "carbohydrate": 40, //碳水化合物含量
-            "dietary_fiber": 10, //膳食纤维含量
             "menu": null
           }]
         }, {
@@ -766,13 +776,20 @@ Page({
             key: 'time',
             success: function(res) {
               console.log(res.data)
+              ptime = res.data;
+              console.log(ptime)
             }
           })
 
+          console.log(111111)
+          console.log(app.globalData.uniqueid)
           //获取本地当前时间，每确定一次都会log一次
           var currenTime = util.formatTime(new Date());
           console.log(currenTime)
-          
+          console.log(ptime)
+          console.log(that.data.cartList.id);
+          console.log(that.data.cartList.num);
+
           /* wx.request({
             url: '',
             data:{
@@ -800,7 +817,9 @@ Page({
           wx.removeStorageSync('foodList');
           that.getGoodsList();
 
-          console.log(111111);
+          
+
+
           wx.switchTab({
             url: '../test/main',
           })

@@ -20,18 +20,21 @@ Page({
     sexindex: 0,
     items: [{
         name: '孕妇',
-        value: '孕妇'
+        value: '孕妇',
+        checked: ''
       },
       {
         name: '高血压',
-        value: '高血压'
+        value: '高血压',
+        checked: ''
       },
       {
         name: '糖尿病',
-        value: '糖尿病'
+        value: '糖尿病',
+        checked: ''
       },
     ],
-    disease:'',
+    disease: '',
     wxInfo: {},
     haswxInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -39,7 +42,7 @@ Page({
   //事件处理函数
 
   onLoad: function() {
-    
+
     if (app.globalData.userInfo) {
       this.setData({
         wxInfo: app.globalData.userInfo,
@@ -81,14 +84,14 @@ Page({
     this.setData({
       date: e.detail.value,
     })
-    
+
   },
   heightinput: function(e) {
     console.log('change,height=', e.detail.value)
     this.setData({
       height: e.detail.value
     })
-    
+
   },
   weightinput: function(e) {
     console.log('change,weight=', e.detail.value)
@@ -110,32 +113,32 @@ Page({
     })
   },
   gotofirstpage: function(e) {
-    if(this.data.height){
-      if(this.data.weight){
+    if (this.data.height) {
+      if (this.data.weight) {
         /* wx.request({
           url: '',
         }) */
         wx.setStorage({
           key: 'uniqueid',
           data: app.globalData.uniqueid,
-          success: function (res) {
+          success: function(res) {
             console.log('保存唯一id成功')
           }
         })
         wx.setStorage({
           key: 'currentinfo',
           data: app.globalData.userInfo,
-          success: function (res) {
+          success: function(res) {
             console.log('保存用户信息成功')
           }
         })
-        
+
         console.log(app.globalData.uniqueid)
 
         var date2 = this.data.date.split("-")
         var str = date2.join("")
         this.setData({
-          uniformdate:str,
+          uniformdate: str,
         })
         console.log(this.data.uniformdate)
 
@@ -143,42 +146,58 @@ Page({
         console.log(uniformsex)
         console.log(this.data.height)
         console.log(this.data.weight)
-        var uniformdisease = this.data.disease.join("+")  
+        var uniformdisease = this.data.disease.join("+")
         console.log(uniformdisease)
 
         /* wx.request({
-          url: '',
+          url: 'https://zh123456eng.xyz/smartdiet/project/newuser',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            userid: app.globalData.uniqueid,
+            sex: uniformsex,
+            birthday: this.data.uniformdate,
+            height: this.data.height,
+            weight: this.data.weight,
+            disease: uniformdisease,
+            PAL: '中'
+          },
+          success: function (v) {
+            console.log(v.data)
+          },
         }) */
+
+
 
         wx.switchTab({
           url: '../usercenter/login'
         })
-      }
-      else{
+      } else {
         wx.showModal({
           title: '提示',
           content: '请输入体重！',
-          success: function (res) {
-            if (res.confirm) {//这里是点击了确定以后
+          success: function(res) {
+            if (res.confirm) { //这里是点击了确定以后
               console.log('用户点击确定')
             }
           }
         })
       }
-    }
-    else{
+    } else {
       wx.showModal({
         title: '提示',
         content: '请输入身高！',
-        success: function (res) {
-          if (res.confirm) {//这里是点击了确定以后
+        success: function(res) {
+          if (res.confirm) { //这里是点击了确定以后
             console.log('用户点击确定')
           }
         }
       })
     }
   },
-  gotofirstpage2: function (e){
+  gotofirstpage2: function(e) {
     wx.switchTab({
       url: '../usercenter/login'
     })

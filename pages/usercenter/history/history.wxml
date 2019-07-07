@@ -1,17 +1,108 @@
 <!--pages/usercenter/history/history.wxml-->
 <view class='wxinfo'>
   <block>
-    <button size='mini' disabled='{{judgeprevious}}' ontap='previousday'>前一天</button>
+    <button size='default' disabled='{{judgeprevious}}' ontap='previousday'>前一天</button>
     <label>{{date}}</label>
-    <button size='mini' disabled='{{judgenext}}' ontap='nextday'>后一天</button>
+    <button size='default' disabled='{{judgenext}}' ontap='nextday'>后一天</button>
   </block>
 </view>
-<view class='usersetting'>
-  <block>
-    <label>这下面是分析</label>
-    <text>\n\n\n</text>
-    <label>这下面是分析</label>
-    <text>\n\n\n</text>
-    <label>这下面是分析</label>
-  </block>
+
+
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
 </view>
+
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+
+<text class="text_time">今日已进食菜品</text>
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+
+
+<view class='row-10' wx:for="{{foods}}" wx:for-index="index" wx:for-item="item">
+  <view class='col'>
+    <view class='col-L10'>{{food_name[index]}}</view>
+    <view class='col-L30'>共</view>
+    <view class='col-L40'>{{food_count[index]}}份</view> 
+  </view>
+  <view>
+    <view style="flex:1;height:10px;background-color:white"></view>
+  </view>
+</view>
+
+
+
+<text class="text_time">今日已摄入营养素值</text>
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+<view class='row-10'>
+  <view class='col'>
+    <view class='col-L1'>已摄入总能量：</view>
+    <view class='col-L2'></view>
+    <view class='col-L3'>共{{text[0]}}</view>
+    <view class='col-L4'>Kcal</view> 
+  </view>
+</view>
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+<view class='row-1'>
+  <view class='col'>
+    <view class='col-L1'>蛋白质</view>
+    <view class='col-L2'>{{text1[0]}}%</view>
+    <view class='col-L3'>共{{text2[0]}}</view>
+    <view class='col-L4'>g</view> 
+  </view>
+</view>
+
+<view class='row-2'>
+  <view class='col'>
+    <view class='col-L1'>脂肪</view>
+    <view class='col-L2'>{{text1[1]}}%</view>
+    <view class='col-L3'>共{{text2[1]}}</view>
+    <view class='col-L4'>g</view>
+  </view>
+</view>
+
+<view class='row-3'>
+  <view class='col'>
+    <view class='col-L1'>碳水化合物</view>
+    <view class='col-L2'>{{text1[2]}}%</view>
+    <view class='col-L3'>共{{text2[2]}}</view>
+    <view class='col-L4'>g</view>
+  </view>
+</view>
+
+<view class='row-4'>
+  <view class='col'>
+    <view class='col-L1'>膳食纤维</view>
+    <view class='col-L2'>{{text1[3]}}%</view>
+    <view class='col-L3'>共{{text2[3]}} </view>
+    <view class='col-L4'> g</view>
+  </view>
+</view>
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+<text class="text_time">今日已摄入营养素占比分析</text>
+<view>
+    <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+
+<view class="pie">
+    <text>四大营养素供能比</text>
+    <canvas canvas-id="pieCanvas1" class="canvas"></canvas>
+
+    <!--分割条-->
+    <view>
+      <view style="flex:1;height:15px;background-color:white"></view>
+    </view>
+
+    <text>三餐热量比</text>
+    <canvas canvas-id="pieCanvas2" class="canvas"></canvas>
+    <!--<canvas canvas-id="columnCanvas" class="canvas"></canvas>-->
+  </view>

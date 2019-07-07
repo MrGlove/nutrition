@@ -31,3 +31,114 @@
 .wxinfo-nickname {
   color: #aaa;
 }
+
+/*两个扇形图布局*/
+
+.pie {
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas {
+  width: 100%;
+  height: 600px;
+}
+
+
+.row-10 {
+  display: block;
+  margin: 0px;
+  background:  rgb(34, 192, 60)
+}
+
+.row-1 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(34, 192, 60), white);
+}
+
+.row-2 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(98, 168, 235), white);
+}
+
+.row-3 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(226, 186, 74), white);
+}
+
+.row-4 {
+  display: block;
+  margin: 0px;
+  background: linear-gradient(to right, rgb(238, 255, 88), white);
+}
+.col {
+  display: flex;
+  padding: 10rpx;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
+
+.col>.col-1, .col-2, .col-3 {
+  overflow: hidden;
+}
+.col-L1 {
+  width: 35%;
+  text-align: right;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L2 {
+  width: 15%;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L3 {
+  width: 23%;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L4 {
+  width: 27%;
+  text-align: left;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L10 {
+  width: 30%;
+  text-align: right;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+
+.col-L30 {
+  width: 40%;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.col-L40 {
+  width: 27%;
+  text-align: left;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.text_time{
+  display:flex;                    /*flex布局*/
+ justify-content: center;
+ font-size: 25px;
+ color: #15ff00;
+}
+
+

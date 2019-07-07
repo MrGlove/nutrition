@@ -1,4 +1,7 @@
 // pages/usercenter/userbasic/userbasic.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -22,29 +25,20 @@ Page({
     sexindex: 0,
     items: [{
         name: 'A',
-        value: 'AAA'
+        value: 'AAA',
+        checked: ''
       },
       {
         name: 'B',
         value: 'BBB',
-        checked: 'true'
+        checked: ''
       },
       {
         name: 'C',
-        value: 'CCC'
+        value: 'CCC',
+        checked: ''
       },
-      {
-        name: 'D',
-        value: 'DDD'
-      },
-      {
-        name: 'E',
-        value: 'EEE'
-      },
-      {
-        name: 'F',
-        value: 'FFF'
-      },
+      
     ]
   },
 
@@ -91,6 +85,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+    wx.request({
+      url: 'https://zh123456eng.xyz/smartdiet/project/wechatlogin',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        puserid: app.globalData.uniqueid
+      },
+      success: function (v) {
+        console.log(v.data)
+        
+      },
+    })
 
   },
 

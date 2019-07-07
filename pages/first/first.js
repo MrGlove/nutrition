@@ -26,19 +26,33 @@ Page({
     })
 
     wx.request({
-      url: 'https://zh123456eng.xyz/smartdiet/project/BMR',
+      url: 'https://zh123456eng.xyz/smartdiet/project/wechatlogin',
       method:'POST',
       header:{
         'content-type':'application/x-www-form-urlencoded'
       },
       data: {
-        /* userid:'001' */
+        userid: '001'
+      },
+      success: function (v) {
+        console.log(45678)
+        console.log(v.data)
+      },
+    })
+
+    /* wx.request({
+      url: 'https://zh123456eng.xyz/smartdiet/project/wechatlogin',
+      method:'POST',
+      header:{
+        'content-type':'application/x-www-form-urlencoded'
+      },
+      data: {
         userid: '001'
       },
       success: function (v) {
         console.log(v.data)
       },
-    })
+    }) */
 
     
 
