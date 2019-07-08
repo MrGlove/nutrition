@@ -25,7 +25,7 @@ Page({
       },
     })
 
-    wx.request({
+    /* wx.request({
       url: 'https://zh123456eng.xyz/smartdiet/project/wechatlogin',
       method:'POST',
       header:{
@@ -38,7 +38,7 @@ Page({
         console.log(45678)
         console.log(v.data)
       },
-    })
+    }) */
 
     /* wx.request({
       url: 'https://zh123456eng.xyz/smartdiet/project/wechatlogin',

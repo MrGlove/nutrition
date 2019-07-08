@@ -9,6 +9,7 @@ Page({
    */
   data: {
     date: '2000-01-01',
+    uniformdate: '20000101',
     height: '',
     weight: '',
     genders: [{
@@ -21,25 +22,25 @@ Page({
         value: '女'
       },
     ],
-    array: ['无', '高血压', '糖尿病'],
     sexindex: 0,
     items: [{
-        name: 'A',
-        value: 'AAA',
+        name: '孕妇',
+        value: '孕妇',
         checked: ''
       },
       {
-        name: 'B',
-        value: 'BBB',
+        name: '高血压',
+        value: '高血压',
         checked: ''
       },
       {
-        name: 'C',
-        value: 'CCC',
+        name: '糖尿病',
+        value: '糖尿病',
         checked: ''
       },
-      
-    ]
+    ],
+    disease: '',
+    uniformsports: '中',
   },
 
   bindDateChange: function(e) {
@@ -71,15 +72,86 @@ Page({
     console.log(this.data.sexindex)
   },
 
-  checkboxChange: function(e) {
+  checkboxChange: function (e) {
     console.log('changecheckbox', e.detail.value)
-  },
-
-  savechange: function(e) {
-    console.log(e)
-    wx.navigateBack({
-
+    this.setData({
+      disease: e.detail.value
     })
+  },
+  sportsChange: function (e) {
+    console.log('changesports', e.detail.value)
+    this.setData({
+      uniformsports: e.detail.value
+    })
+  },
+  savechange: function(e) {
+    if (this.data.height) {
+      if (this.data.weight) {
+        console.log(app.globalData.uniqueid)
+
+        var date2 = this.data.date.split("-")
+        var str = date2.join("")
+        this.setData({
+          uniformdate: str,
+        })
+        console.log(this.data.uniformdate)
+
+        var uniformsex = this.data.genders[this.data.sexindex].value
+        console.log(uniformsex)
+        console.log(this.data.height)
+        console.log(this.data.weight)
+        if (this.data.disease) {
+          var uniformdisease = this.data.disease.join("+")
+        } else {
+          var uniformdisease = ''
+        }
+        console.log(uniformdisease)
+        console.log(this.data.uniformsports)
+
+        wx.request({
+          url: 'https://zh123456eng.xyz/smartdiet/project/newuser',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            userid: app.globalData.uniqueid,
+            sex: uniformsex,
+            birthday: this.data.uniformdate,
+            height: this.data.height,
+            weight: this.data.weight,
+            disease: uniformdisease,
+            PAL: this.data.uniformsports
+          },
+          success: function (v) {
+            console.log(v.data)
+          },
+        })
+        wx.switchTab({
+          url: '../login',
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请输入体重！',
+          success: function (res) {
+            if (res.confirm) { //这里是点击了确定以后
+              console.log('用户点击确定')
+            }
+          }
+        })
+      }
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '请输入身高！',
+        success: function (res) {
+          if (res.confirm) { //这里是点击了确定以后
+            console.log('用户点击确定')
+          }
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -93,11 +165,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        puserid: app.globalData.uniqueid
+        userid: app.globalData.uniqueid
       },
-      success: function (v) {
+      success: function(v) {
         console.log(v.data)
-        
       },
     })
 

@@ -1,19 +1,18 @@
 {
   "pages": [
+    
     "pages/first/first",
     "pages/select_time/select_time",
-    
     "pages/init/init",
     "pages/test/main",
-    
-    "pages/basket/basket",  
+    "pages/basket/basket",
     "pages/usercenter/history/history",
     "pages/usercenter/login",
-    
     "pages/usercenter/userbasic/userbasic",
     "pages/usercenter/advise/advise",
-    "pages/usercenter/about/about"
-   
+    "pages/usercenter/about/about",
+    "pages/usercenter/userbasic/currentinfo/currentinfo"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -50,7 +50,7 @@ Page({
   gotosetting: function(e){
     console.log(e)
     wx.navigateTo({
-      url: 'userbasic/userbasic',
+      url: 'userbasic/currentinfo/currentinfo',
     })
   },
   gotohistory: function (e) {

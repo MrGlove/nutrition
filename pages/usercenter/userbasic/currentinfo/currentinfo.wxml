@@ -1,0 +1,13 @@
+<!--pages/usercenter/userbasic/currentinfo/currentinfo.wxml-->
+<view class="container">
+  <view class='usersetting'>
+  <view>出生日期：{{birthday}}</view>
+  <view>性别：{{sex}}</view>
+  <view>身高(cm)：{{height}}</view>
+  <view>体重(kg)：{{weight}}</view>
+  <view>患病情况：{{disease}}</view>
+  <view>运动量：{{sports}}</view>
+  <text>\n\n</text>
+  <button class='' type='primary' ontap='modifyuserinfo'>修改</button>
+  </view>
+</view>

@@ -1,11 +1,6 @@
 const util = require('../../utils/util.js');
 const app = getApp();
-
 const ajax = app.globalData.ajax;
-
-var ptime;
-
-
 
 Page({
   /**
@@ -34,6 +29,7 @@ Page({
     foodList: [], //食品列表
     scrollHeight: '',
     maskAllPage: true
+    
   },
 
   /**
@@ -65,7 +61,7 @@ Page({
     })
     //存储options.time的值，下面调用并传给接口
     try {
-      wx.setStorageSync('time', options)
+      wx.setStorageSync('time', options.time)
     } catch (e) {}
 
     // 下单类型
@@ -129,17 +125,7 @@ Page({
             "price": 279,
             "total": 0,
             "num": 0,
-            "menu": [{
-              id: "1-1",
-              spec: "小份",
-              price: 13,
-              num: 0
-            }, {
-              id: "1-2",
-              spec: "大份",
-              price: 21,
-              num: 0
-            }]
+            "menu": null
           }, {
             "id": 11,
             "name": "小白菜鸡蛋汤",
@@ -312,6 +298,15 @@ Page({
         }]
       }
     }
+    res.data.data[0].menu.push({
+      "id": 55,
+      "name": "清炒西蓝花",
+      "spec": "",
+      "img": "",
+      "price": 20,
+      "total": 0,
+      "num": 0,
+      "menu": null})
     this.setData({
       shop: res.data,
       classifySeleted: res.data.data["0"].id
@@ -678,9 +673,6 @@ Page({
       console.log(passed_total)*/
       //.....
 
-
-
-
     } else {
       var foodList = [];
       var order = {};
@@ -776,8 +768,7 @@ Page({
             key: 'time',
             success: function(res) {
               console.log(res.data)
-              ptime = res.data;
-              console.log(ptime)
+              
             }
           })
 
@@ -786,9 +777,16 @@ Page({
           //获取本地当前时间，每确定一次都会log一次
           var currenTime = util.formatTime(new Date());
           console.log(currenTime)
-          console.log(ptime)
-          console.log(that.data.cartList.id);
-          console.log(that.data.cartList.num);
+          console.log(app.globalData.diettime)
+          var cartlistid = [];
+          var cartlistnum = [];
+          for(var i=0;i<that.data.cartList.length;i++){
+            cartlistid[i] = that.data.cartList[i].id.toString()
+            cartlistnum[i] = that.data.cartList[i].num.toString()
+          }
+          console.log(cartlistid);
+          console.log(cartlistnum);
+          
 
           /* wx.request({
             url: '',

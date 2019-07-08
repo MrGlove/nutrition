@@ -21,20 +21,24 @@ Page({
     items: [{
         name: '孕妇',
         value: '孕妇',
-        checked: ''
+        checked: '',
+        disabled: false
       },
       {
         name: '高血压',
         value: '高血压',
-        checked: ''
+        checked: '',
+        disabled: false
       },
       {
         name: '糖尿病',
         value: '糖尿病',
-        checked: ''
+        checked: '',
+        disabled: false
       },
     ],
     disease: '',
+    uniformsports: '中',
     wxInfo: {},
     haswxInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -105,11 +109,24 @@ Page({
       sexindex: 1 - this.data.sexindex
     })
     console.log(this.data.sexindex)
+    /* if(this.data.sexindex==1){
+      this.data.items[0].disabled = false
+    }
+    else{
+      this.data.items[0].disabled = true
+    }
+    this.onLoad() */
   },
   checkboxChange: function(e) {
     console.log('changecheckbox', e.detail.value)
     this.setData({
       disease: e.detail.value
+    })
+  },
+  sportsChange:function(e){
+    console.log('changesports',e.detail.value)
+    this.setData({
+      uniformsports: e.detail.value
     })
   },
   gotofirstpage: function(e) {
@@ -146,10 +163,15 @@ Page({
         console.log(uniformsex)
         console.log(this.data.height)
         console.log(this.data.weight)
-        var uniformdisease = this.data.disease.join("+")
+        if(this.data.disease){
+          var uniformdisease = this.data.disease.join("+")
+        }else{
+          var uniformdisease = ''
+        }
         console.log(uniformdisease)
+        console.log(this.data.uniformsports)
 
-        /* wx.request({
+        wx.request({
           url: 'https://zh123456eng.xyz/smartdiet/project/newuser',
           method: 'POST',
           header: {
@@ -162,14 +184,12 @@ Page({
             height: this.data.height,
             weight: this.data.weight,
             disease: uniformdisease,
-            PAL: '中'
+            PAL: this.data.uniformsports
           },
           success: function (v) {
             console.log(v.data)
           },
-        }) */
-
-
+        })
 
         wx.switchTab({
           url: '../usercenter/login'

@@ -48,11 +48,36 @@
       <view>
         <checkbox-group bindchange="checkboxChange">
           <label class="checkbox" wx:for="{{items}}">
-            <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+            <checkbox value="{{item.name}}" disabled='{{item.disabled}}' checked="{{item.checked}}" />{{item.value}}
             <text>\n</text>
           </label>
         </checkbox-group>
       </view>
+      
+      <view class='usersetting'>请选择运动量：</view>
+      <view class='wxinfo'>
+        <block>
+          <radio-group class="radio-group" bindchange="sportsChange">
+            <label class="radio">
+              高
+              <radio value="高" checked="" />
+            </label>
+            <label class="radio">
+              中
+              <radio value="中" checked="true" />
+            </label>
+            <label class="radio">
+              低
+              <radio value="低" checked="" />
+            </label>
+            <label class="radio">
+              极低
+              <radio value="极低" checked="" />
+            </label>
+          </radio-group>
+        </block>
+      </view>
+      
 
       <view class='wxinfo'>
         <button class='btn' type='primary' ontap='gotofirstpage'>保存</button>

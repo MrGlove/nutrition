@@ -46,6 +46,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    uniqueid:''
+    uniqueid:'',
+    diettime:''
   }
 })
