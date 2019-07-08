@@ -27,14 +27,14 @@
       </a>
       <a ontap='gotoadvise' class="weui-cell weui-cell_access" href="javascript:;">
         <view class="weui-cell__bd">
-          <text>提出建议</text>
+          <text>联系我们</text>
         </view>
         <view class="weui-cell__ft">
         </view>
       </a>
       <a ontap='gotoabout' class="weui-cell weui-cell_access" href="javascript:;">
         <view class="weui-cell__bd">
-          <text>关于</text>
+          <text>关于小程序</text>
         </view>
         <view class="weui-cell__ft">
         </view>

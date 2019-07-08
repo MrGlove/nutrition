@@ -5,14 +5,31 @@
       <image class="userinfo-avatar" src='../../../images/logo.png'></image>
       
       <text>\n\n</text>
-      <text>aaaaaaaaaaaaa</text>
+      <text class="text1">　　本小程序是作为世界顶尖大学山东大学软件学院2016级暑期实训项目，由神思电子的王卫中老师带领小组7位同学完成。</text>
       <text>\n</text>
-      <text>bbbbbbbbb</text>
+      <text class="text2">　人员分工如下：</text>
       <text>\n</text>
-      <text>ccccccccccccc</text>
-      <text>\n\n\n</text>
+      <text class="text2">　小程序端：</text>
+      <text class="text3">顾尹其</text>
+      <text  class="text3">李加旺</text>
+      <text>\n</text>
+      <text class="text2"> 　web前端：</text>
+      <text  class="text3">种政</text>
+      <text>\n</text>
+      <text class="text2">　后端接口：</text>
+      <text  class="text3">郑金文</text>
+      <text  class="text3">吴宇涵</text>
+      <text>\n</text>
+      <text class="text2">　测试组：</text>
+      <text  class="text3">任伟</text>
+      <text  class="text3">季琛</text>
+      <text>\n</text>
+      <text class="text2">　指导教师：</text>
+      <text  class="text3">王卫中</text>
+      <text>\n</text>
+      <text>\n</text>
 
-      <button type='primary' ontap='goback'>返回</button>
+   
       
     </block>
   </view>
