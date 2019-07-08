@@ -2,11 +2,15 @@ const util = require('../../utils/util.js');
 const app = getApp();
 const ajax = app.globalData.ajax;
 
+
+
+
 Page({
   /**
    * 设定页面的初始数据
    */
   data: {
+    initfood: [],
     shop: {}, // 商品数据
     classifySeleted: '',
     defaultImg: 'guide_logo.png', //开始时设为默认图片
@@ -29,7 +33,7 @@ Page({
     foodList: [], //食品列表
     scrollHeight: '',
     maskAllPage: true
-    
+
   },
 
   /**
@@ -47,9 +51,13 @@ Page({
       data: {
         keyword: ''
       },
-      success: function (v) {
+      success: function(v) {
         console.log(123)
         console.log(v.data)
+        wx.setStorage({
+          key: 'temfood',
+          data: v.data,
+        })
       },
     })
 
@@ -108,7 +116,7 @@ Page({
 
   // 获取商品
   getGoodsList() {
-    var res = {
+    var resfood = {
       "code": 0,
       "message": null,
       "data": {
@@ -117,200 +125,85 @@ Page({
         "data": [{
           "id": "C1",
           "name": "饮品汤类",
-          "menu": [{
-            "id": 10,
-            "name": "排骨萝卜汤",
-            "spec": "",
-            "img": "",
-            "price": 279,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 11,
-            "name": "小白菜鸡蛋汤",
-            "spec": "",
-            "img": "",
-            "price": 220,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 12,
-            "name": "玉米山药汤",
-            "spec": "",
-            "img": "",
-            "price": 13,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }, {
           "id": "C2",
           "name": "素菜类",
-          "menu": [{
-            "id": 4,
-            "name": "炝炒油菜",
-            "spec": "",
-            "img": "",
-            "price": 8,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 5,
-            "name": "豆腐黄瓜片",
-            "spec": "",
-            "img": "",
-            "price": 8,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 6,
-            "name": "香菇青豆",
-            "spec": "",
-            "img": "",
-            "price": 8,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }, {
           "id": "C3",
           "name": "水产类",
-          "menu": [{
-            "id": 1,
-            "name": "青椒牛肉",
-            "spec": "",
-            "img": "",
-            "price": 15,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 2,
-            "name": "清炒藕片",
-            "spec": "",
-            "img": "",
-            "price": 10,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 3,
-            "name": "清炒香菇",
-            "spec": "",
-            "img": "",
-            "price": 10,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }, {
           "id": "C4",
           "name": "主食类",
-          "menu": [{
-            "id": 7,
-            "name": "蒸排骨",
-            "spec": "",
-            "img": "",
-            "price": 20,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 8,
-            "name": "梅菜扣肉",
-            "spec": "",
-            "img": "",
-            "price": 20,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 9,
-            "name": "风味肉末蒸豆腐",
-            "spec": "",
-            "img": "",
-            "price": 20,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }, {
           "id": "C5",
           "name": "肉类",
-          "menu": [{
-            "id": 13,
-            "name": "凉拌鸡丝",
-            "spec": "",
-            "img": "",
-            "price": 18,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 14,
-            "name": "蒜泥白肉",
-            "spec": "",
-            "img": "",
-            "price": 18,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }, {
-            "id": 15,
-            "name": "浇汁皮蛋",
-            "spec": "",
-            "img": "",
-            "price": 18,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }, {
           "id": "C6",
           "name": "水果类",
-          "menu": [{
-            "id": 16,
-            "name": "珍珠米饭",
-            "spec": "",
-            "img": "",
-            "price": 2,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }, {
           "id": "C7",
           "name": "其他",
-          "menu": [{
-            "id": 16,
-            "name": "珍珠米饭",
-            "spec": "",
-            "img": "",
-            "price": 2,
-            "total": 0,
-            "num": 0,
-            "menu": null
-          }]
+          "menu": []
         }]
       }
     }
-    res.data.data[0].menu.push({
-      "id": 55,
-      "name": "清炒西蓝花",
-      "spec": "",
-      "img": "",
-      "price": 20,
-      "total": 0,
-      "num": 0,
-      "menu": null})
-    this.setData({
-      shop: res.data,
-      classifySeleted: res.data.data["0"].id
+    wx.getStorage({
+      key: 'temfood',
+      success: function(res) {
+        console.log(res.data)
+      },
     })
+    var pfood = wx.getStorageSync('temfood')
+    /* console.log(pfood) */
+    console.log("开始添加菜品")
+    for (var i in pfood) {
+      /* console.log("第" + i + "道菜")
+      console.log(pfood[i]) */
+      var temdish = {
+        "id": pfood[i].dishid,
+        "name": pfood[i].name,
+        "spec": '',
+        "img": pfood[i].img,
+        "price": parseInt(pfood[i].kcal),
+        "total": 0,
+        "num": 0,
+        "menu": null
+      }
+      /* console.log(temdish) */
+      if (pfood[i].category == '饮品/汤类') {
+        resfood.data.data[0].menu.push(temdish)
+      }
+      if (pfood[i].category == '蔬菜类') {
+        resfood.data.data[1].menu.push(temdish)
+      }
+      if (pfood[i].category == '水产类') {
+        resfood.data.data[2].menu.push(temdish)
+      }
+      if (pfood[i].category == '主食类') {
+        resfood.data.data[3].menu.push(temdish)
+      }
+      if (pfood[i].category == '肉类') {
+        resfood.data.data[4].menu.push(temdish)
+      }
+      if (pfood[i].category == '水果') {
+        resfood.data.data[5].menu.push(temdish)
+      }
+      if (pfood[i].category == '其他') {
+        resfood.data.data[6].menu.push(temdish)
+      }
+    }
+    /* console.log(resfood.data) */
+    this.setData({
+      shop: resfood.data,
+      classifySeleted: resfood.data.data['0'].id
+    })
+    console.log(this.data.shop)
     // 获取本地已储存数据
     if (this.data.orderType == 0) {
       this.getLocalData();
@@ -324,6 +217,43 @@ Page({
     wx.hideToast()
 
   },
+
+  /* addfood(index){
+    var ppfood = wx.getStorageSync('temfood')
+    console.log(ppfood)
+    var temdish = {
+      "id": ppfood[i].dishid,
+      "name": ppfood[i].name,
+      "spec": '',
+      "img": '',
+      "price": parseInt(ppfood[i].kcal),
+      "total": 0,
+      "num": 0,
+      "menu": null
+    }
+    console.log(temdish)
+    if (dish.category == '饮品汤类') {
+      res.data.data[0].menu.push(temdish)
+    }
+    if(dish.category=='蔬菜类'){
+      res.data.data[1].menu.push(temdish)
+    }
+    if (dish.category == '水产类') {
+      res.data.data[2].menu.push(temdish)
+    }
+    if (dish.category == '主食类') {
+      res.data.data[3].menu.push(temdish)
+    }
+    if (dish.category == '肉类') {
+      res.data.data[4].menu.push(temdish)
+    }
+    if (dish.category == '水果') {
+      res.data.data[5].menu.push(temdish)
+    }
+    if (dish.category == '其他') {
+      res.data.data[6].menu.push(temdish)
+    }
+  }, */
 
   // 获取本地订单数据
   getLocalData() {
@@ -768,7 +698,7 @@ Page({
             key: 'time',
             success: function(res) {
               console.log(res.data)
-              
+
             }
           })
 
@@ -780,27 +710,31 @@ Page({
           console.log(app.globalData.diettime)
           var cartlistid = [];
           var cartlistnum = [];
-          for(var i=0;i<that.data.cartList.length;i++){
+          for (var i = 0; i < that.data.cartList.length; i++) {
             cartlistid[i] = that.data.cartList[i].id.toString()
             cartlistnum[i] = that.data.cartList[i].num.toString()
           }
           console.log(cartlistid);
           console.log(cartlistnum);
-          
 
-          /* wx.request({
-            url: '',
+
+          wx.request({
+            url: 'https://zh123456eng.xyz/smartdiet/project/recorddiet',
             data:{
-               把本餐的数据传给数据库
+              userid: app.globalData.uniqueid,
+              date: currenTime.toString(),
+              time: app.globalData.diettime.toString(),
+              dishid: cartlistid,
+              count: cartlistnum
             },
             method:'POST',
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
             success:function(e){
-
+              console.log(e)
             }
-          }) */
+          })
 
           that.setData({
             cart: {
@@ -815,7 +749,7 @@ Page({
           wx.removeStorageSync('foodList');
           that.getGoodsList();
 
-          
+
 
 
           wx.switchTab({
