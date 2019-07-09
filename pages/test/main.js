@@ -8,7 +8,7 @@ var pieChart2 = null;
 var already_num = 500; //已摄入能量总值（菜篮子界面传过来的参数）
 var should_num = 2000; //推荐摄入能量总值
 var need_num = should_num - already_num; //还需摄入能量总值
-var percent = 100*already_num/should_num;
+var percent = 100 * already_num / should_num;
 
 var nutrient_num1 = 1200; //图表中蛋白质总量
 var nutrient_num2 = 300; //图表中脂肪总量
@@ -32,7 +32,14 @@ var pieChart2_num3 = 100 * pieChart2_dinner / (pieChart2_breakfast + pieChart2_l
 Page({
 
   data: {
-    pass_num: {},
+    imgUrls: [
+      'https://s2.ax1x.com/2019/07/08/ZrwFmT.jpg',
+      'https://s2.ax1x.com/2019/07/08/ZrUsAJ.jpg',
+    ],
+    indicatorDots: true, //Boolean是否显示面板指示点 
+    autoplay: true, //Boolean是否自动切换 
+    interval: 3000, //Number自动切换时间间隔 
+    duration: 500, //Number滑动动画时长
 
 
 
@@ -42,7 +49,7 @@ Page({
 
     navbar: ['营养中心', '菜谱中心'], //最上方分类栏的名字
     currentTab: 0, //最开始是在第一个“营养中心”的界面上
-    pctg:percent,
+    pctg: percent,
 
   },
   onLoad: function(option) {

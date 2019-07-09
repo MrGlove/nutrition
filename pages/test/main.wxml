@@ -2,7 +2,17 @@
 <!-- <view class="navbar">
   <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
 </view> -->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="unique">
+    <swiper-item>
+      <image src="{{item}}" model="aspectFit" style="width=100%;" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
 
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>
 <!--1.营养中心-->
 <view hidden="{{currentTab!==0}}">
 
@@ -107,7 +117,7 @@
       <view class='col-L1'>蛋白质</view>
       <view class='col-L2'>{{text1[0]}}%</view>
       <view class='col-L3'>共{{text2[0]}}</view>
-      <view class='col-L4'>Kcal</view> 
+      <view class='col-L4'>Kcal</view>
     </view>
   </view>
 
@@ -244,7 +254,3 @@
 
 </view>
 <!--1.营养中心的view-->
-
-
-
-

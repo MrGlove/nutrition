@@ -153,12 +153,6 @@ Page({
         }]
       }
     }
-    wx.getStorage({
-      key: 'temfood',
-      success: function(res) {
-        console.log(res.data)
-      },
-    })
     var pfood = wx.getStorageSync('temfood')
     /* console.log(pfood) */
     console.log("开始添加菜品")
@@ -693,16 +687,7 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log(that.data.cartList);
-          //调用time本地缓存，获取区分早中晚餐[0,1,2]
-          wx.getStorage({
-            key: 'time',
-            success: function(res) {
-              console.log(res.data)
-
-            }
-          })
-
-          console.log(111111)
+      
           console.log(app.globalData.uniqueid)
           //获取本地当前时间，每确定一次都会log一次
           var currenTime = util.formatTime(new Date());
@@ -749,18 +734,12 @@ Page({
           wx.removeStorageSync('foodList');
           that.getGoodsList();
 
-
-
-
           wx.switchTab({
             url: '../test/main',
           })
-
         }
       }
-
     })
-
   },
 
   /**
