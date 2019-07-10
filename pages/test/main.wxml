@@ -1,7 +1,3 @@
-<!--导航条-->
-<!-- <view class="navbar">
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
-</view> -->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{imgUrls}}" wx:key="unique">
     <swiper-item>
@@ -13,244 +9,113 @@
 <view>
   <view style="flex:1;height:15px;background-color:white"></view>
 </view>
-<!--1.营养中心-->
-<view hidden="{{currentTab!==0}}">
 
-  <!--   
-  <view class="content0">
-    <view class="content01" style="flex:1;height:75px;background-color:lightyellow">
-      <view class='content01_text1'>
-        <text>已摄入：</text>
-      </view>
-      <view class='content01_text2'>
-        <text>{{text[0]}}</text>
-      </view>
-      <view class='content01_text3'>
-        <text>Kcal</text>
-      </view>
-    </view>
-    <view class="content02" style="flex:1;height:75px;background-color:lightgreen">
-      <view class='content01_text1'>
-        <text>推荐摄入：</text>
-      </view>
-      <view class='content01_text2'>
-        <text>{{text[1]}}</text>
-      </view>
-      <view class='content01_text3'>
-        <text>Kcal</text>
-      </view>
-    </view>
-    <view class="content03" style="flex:1;height:75px;background-color:lightyellow">
-      <view class='content01_text1'>
-        <text>还需摄入：</text>
-      </view>
-      <view class='content01_text2'>
-        <text>{{text[2]}}</text>
-      </view>
-      <view class='content01_text3'>
-        <text>Kcal</text>
-      </view>
-    </view>
-  </view>
 
-  <view>
-    <view style="flex:1;height:15px;background-color:lightgray"></view>
-  </view>
-   -->
-  <view class='suggest'>推荐摄入{{text[1]}}Kcal</view>
+<view class='suggest'>推荐摄入{{ shouldnum}}Kcal</view>
 
-  <view class='row'>
-    <view class='col'>
-      <view class='col-1'>已摄入{{text[0]}}Kcal</view>
-      <view class='col-2'>{{pctg}}%</view>
-      <view class='col-3'>还需摄入{{text[2]}}Kcal</view>
-    </view>
+<view class='row'>
+  <view class='col'>
+    <view class='col-1'>已摄入{{alreadynum}}Kcal</view>
+    <view class='col-2'>{{pctg}}%</view>
+    <view class='col-3'>还需摄入{{neednum}}Kcal</view>
   </view>
-  <progress percent='{{pctg}}' border-radius='50' stroke-width='11' activecolor='#32CD32' backgroundColor='#FFC125' active='true'></progress>
+</view>
+<progress percent='{{pctg}}' border-radius='50' stroke-width='11' activecolor='#32CD32' backgroundColor='#FFC125' active='true'></progress>
 
-  <view>
-    <view style="flex:1;height:15px;background-color:white"></view>
-  </view>
-  <view>
-    <view style="flex:1;height:15px;background-color:white"></view>
-  </view>
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>
 
-  <view class='row'>
-    <view class='col2x2'>
-      <view class='col-4'>
-        <text>
-      蛋白质 {{text1[0]}}%</text>
-        <text>\n</text>
-        <text>{{text2[0]}} Kcal</text>
-      </view>
-      <view class='col-5'>
-        <text>
-      脂肪 {{text1[1]}}%</text>
-        <text>\n</text>
-        <text>{{text2[1]}} Kcal</text>
-      </view>
-    </view>
-  </view>
-  <view class='row'>
-    <view class='col2x2'>
-      <view class='col-6'>
-        <text>
-      碳水化合物 {{text1[2]}}%</text>
-        <text>\n</text>
-        <text>{{text2[2]}}  Kcal</text>
-      </view>
-      <view class='col-7'>
-        <text>
-      膳食纤维 {{text1[3]}}%</text>
-        <text>\n</text>
-        <text>{{text2[3]}} Kcal</text>
-      </view>
-    </view>
-  </view>
 
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>
+
+<view>四大营养素供能比</view>
+
+<view class='row-1'>
+  <view class='col'>
+    <view class='col-L1'>蛋白质</view>
+    <view class='col-L2'>{{num01}}%</view>
+    <view class='col-L3'>共{{num1}}</view>
+    <view class='col-L4'>Kcal</view>
+  </view>
+</view>
+
+<view class='row-2'>
+  <view class='col'>
+    <view class='col-L1'>脂肪</view>
+    <view class='col-L2'>{{num02}}%</view>
+    <view class='col-L3'>共{{num2}}</view>
+    <view class='col-L4'>Kcal</view>
+  </view>
+</view>
+
+<view class='row-3'>
+  <view class='col'>
+    <view class='col-L1'>碳水化合物</view>
+    <view class='col-L2'>{{num03}}%</view>
+    <view class='col-L3'>共{{num3}}</view>
+    <view class='col-L4'>Kcal</view>
+  </view>
+</view>
+
+<view class='row-4'>
+  <view class='col'>
+    <view class='col-L1'>膳食纤维</view>
+    <view class='col-L2'>{{num04}}%</view>
+    <view class='col-L3'>共{{num4}} </view>
+    <view class='col-L4'> Kcal</view>
+  </view>
+</view>
+
+
+<!--两个表格-->
+<view class="pie">
+  <canvas canvas-id="pieCanvas1" class="canvas"></canvas>
+
+  <!--分割条-->
   <view>
     <view style="flex:1;height:15px;background-color:white"></view>
   </view>
 
+  <view>三餐供能比</view>
   <view class='row-1'>
     <view class='col'>
-      <view class='col-L1'>蛋白质</view>
-      <view class='col-L2'>{{text1[0]}}%</view>
-      <view class='col-L3'>共{{text2[0]}}</view>
+      <view class='col-L1'>早餐</view>
+      <view class='col-L2'>{{ num21}}%</view>
+      <view class='col-L3'>共{{num11}}</view>
       <view class='col-L4'>Kcal</view>
     </view>
   </view>
 
   <view class='row-2'>
     <view class='col'>
-      <view class='col-L1'>脂肪</view>
-      <view class='col-L2'>{{text1[1]}}%</view>
-      <view class='col-L3'>共{{text2[1]}}</view>
+      <view class='col-L1'>午餐</view>
+      <view class='col-L2'>{{ num22}}%</view>
+      <view class='col-L3'>共{{num12}}</view>
       <view class='col-L4'>Kcal</view>
     </view>
   </view>
 
   <view class='row-3'>
     <view class='col'>
-      <view class='col-L1'>碳水化合物</view>
-      <view class='col-L2'>{{text1[2]}}%</view>
-      <view class='col-L3'>共{{text2[2]}}</view>
+      <view class='col-L1'>晚餐</view>
+      <view class='col-L2'>{{ num23}}%</view>
+      <view class='col-L3'>共{{num13}}</view>
       <view class='col-L4'>Kcal</view>
     </view>
   </view>
 
-  <view class='row-4'>
-    <view class='col'>
-      <view class='col-L1'>膳食纤维</view>
-      <view class='col-L2'>{{text1[3]}}%</view>
-      <view class='col-L3'>共{{text2[3]}} </view>
-      <view class='col-L4'> Kcal</view>
-    </view>
-  </view>
 
 
-  <!--四大营养素表格-->
-  <!-- <view class="content2">
-    <view class="content21" style="flex:1;height:27px;">
-      <view class='content22_text1'>
-        <text>蛋白质：</text>
-      </view>
-      <view class='content22_text2'>
-        <text>{{text2[0]}}</text>
-      </view>
-      <view class='content22_text3'>
-        <text>Kcal</text>
-      </view>
 
-      <view class='content22_text4'>
-        <text>%</text>
-      </view>
-      <view class='content22_text5'>
-        <text>{{text1[0]}}</text>
-      </view>
-    </view>
 
-    <view class="content22" style="flex:1;height:27px;">
-      <view class='content22_text1'>
-        <text>脂肪：</text>
-      </view>
-      <view class='content22_text2'>
-        <text>{{text2[1]}}</text>
-      </view>
-      <view class='content22_text3'>
-        <text>Kcal</text>
-      </view>
-      <view class='content22_text4'>
-        <text>%</text>
-      </view>
-      <view class='content22_text5'>
-        <text>{{text1[1]}}</text>
-      </view>
-    </view>
-
-    <view class="content23" style="flex:1;height:27px;">
-      <view class='content22_text1'>
-        <text>碳水化合物：</text>
-      </view>
-      <view class='content22_text2'>
-        <text>{{text2[2]}}</text>
-      </view>
-      <view class='content22_text3'>
-        <text>Kcal</text>
-      </view>
-      <view class='content22_text4'>
-        <text>%</text>
-      </view>
-      <view class='content22_text5'>
-        <text>{{text1[2]}}</text>
-      </view>
-
-    </view>
-
-    <view class="content24" style="flex:1;height:27px;">
-      <view class='content22_text1'>
-        <text>膳食纤维：</text>
-      </view>
-      <view class='content22_text2'>
-        <text>{{text2[3]}}</text>
-      </view>
-      <view class='content22_text3'>
-        <text>Kcal</text>
-      </view>
-      <view class='content22_text4'>
-        <text>%</text>
-      </view>
-      <view class='content22_text5'>
-        <text>{{text1[3]}}</text>
-      </view>
-    </view>
-
-  </view> -->
-
-  <!--分割条-->
-  <view>
-    <view style="flex:1;height:15px;background-color:white"></view>
-  </view>
-
-  <!--两个表格-->
-  <view class="pie">
-    <text>四大营养素供能比</text>
-    <canvas canvas-id="pieCanvas1" class="canvas"></canvas>
-
-    <!--分割条-->
-    <view>
-      <view style="flex:1;height:15px;background-color:white"></view>
-    </view>
-
-    <text>三餐热量比</text>
-    <canvas canvas-id="pieCanvas2" class="canvas"></canvas>
-    <!--<canvas canvas-id="columnCanvas" class="canvas"></canvas>-->
-  </view>
-
-  <!--分割条-->
-  <view>
-    <view style="flex:1;height:15px;background-color:white"></view>
-  </view>
-
+  <canvas canvas-id="pieCanvas2" class="canvas"></canvas>
+  <!--<canvas canvas-id="columnCanvas" class="canvas"></canvas>-->
 </view>
-<!--1.营养中心的view-->
+
+<!--分割条-->
+<view>
+  <view style="flex:1;height:15px;background-color:white"></view>
+</view>

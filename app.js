@@ -47,6 +47,7 @@ App({
   globalData:{
     userInfo:null,
     uniqueid:'',
-    diettime:''
+    diettime:'',
+    uniformtime:["早","中","晚"]
   }
 })

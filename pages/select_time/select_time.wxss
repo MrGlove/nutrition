@@ -4,3 +4,14 @@
   width: 260px;
   height: 158px;
 }
+
+.weui-cell__ft2{
+  text-align:right;
+  color:#999999;
+  /* font-size: 20px; */
+}
+
+.textsize{
+  font-size: 18px;
+  color:#999999;
+}

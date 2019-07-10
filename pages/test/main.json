@@ -1,5 +1,6 @@
 {
   "navigationBarBackgroundColor": "#EC6941",
   "navigationBarTitleText": "饮食中心",
-  "navigationBarTextStyle": "black"
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
 }

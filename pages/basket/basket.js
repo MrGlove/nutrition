@@ -692,7 +692,7 @@ Page({
           //获取本地当前时间，每确定一次都会log一次
           var currenTime = util.formatTime(new Date());
           console.log(currenTime)
-          console.log(app.globalData.diettime)
+          console.log(app.globalData.uniformtime[app.globalData.diettime])
           var cartlistid = [];
           var cartlistnum = [];
           for (var i = 0; i < that.data.cartList.length; i++) {
@@ -708,7 +708,7 @@ Page({
             data:{
               userid: app.globalData.uniqueid,
               date: currenTime.toString(),
-              time: app.globalData.diettime.toString(),
+              time: app.globalData.uniformtime[app.globalData.diettime],
               dishid: cartlistid,
               count: cartlistnum
             },
